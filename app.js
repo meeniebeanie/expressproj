@@ -3,6 +3,7 @@
 var express = require('express');
 var app = express();
 var port = process.env.PORT || 4000;
+var router = require("./config/routes");
 
 app.set('views', './views');
 app.set('view engine', 'ejs');
@@ -14,17 +15,7 @@ app.use(function(req, res, next){
   next();
 });
 
-
-
-app.get('/', function(req, res) {
-    res.render('index');
-});
-app.get('/about', function(req, res) {
-    res.render('about');
-});
-app.get('/contact', function(req, res) {
-    res.render('contact');
-});
+app.use('/',router);
 
 app.set('port',(process.env.PORT || 7000));
 
